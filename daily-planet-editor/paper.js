@@ -9,10 +9,9 @@ just fix the existing ones.
 
 // Written by Kent, Clark
 
-var enemyName=["Lex","Batman","Darkside","Brainiac","General Zod","Doomsday"];
+var enemyName=["Lex", "Batman", "Darkside", "Brainiac", "General Zod", "Doomsday"];
 
-function whoWins(isThereKryptonite, enemyName)
-{
+function whoWins(isThereKryptonite, enemyName){
 if (!isThereKryptonite)
 {
     return "Superman beats " + enemyName + ", of course";
@@ -25,25 +24,25 @@ else{
 
 for (var i= 0; i < enemyName.length; i++)
 {
-    var = is_there_kryptonite:
-    if (i%2=== 0) {
-        is_there_kryptonite = true;
+    
+    if (i%2=== 0){
+        isThereKryptonite = true;
     } else {
-        is_there_kryptonite = false;
+        isThereKryptonite = false;
     }
-    console.log(whoWins(is_there_kryptonite,enemyName[i]));
+    console.log(whoWins(isThereKryptonite,enemyName[i]));
 }
 
 function HowAttractedIsLoisLaneToMe ()
 {
     // 1 is not at all attracted, 10 is "super" attracted...
-    return Math.floor((Mat.random()*10)+1);
+    return Math.floor((Math.random()*10)+1);
 }
 
 console.log( HowAttractedIsLoisLaneToMe ()) ;
 
 var clarkKent =true;
-var superman false;
+var superman =false;
 
 while (clarkKent){
     console.log("I'm just a nerdy columnist");
