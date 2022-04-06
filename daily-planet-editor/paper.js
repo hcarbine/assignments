@@ -25,7 +25,7 @@ for (var i= 0; i < enemyName.length; i++){
     } else {
         isThereKryptonite = false;
     }
-console.log(whoWins(isThereKryptonite,enemyName[i]));
+console.log(whoWins(isThereKryptonite, enemyName[i]));
 }
 
 function howAttractedIsLoisLaneToMe(){
@@ -34,15 +34,15 @@ function howAttractedIsLoisLaneToMe(){
 }
 console.log(howAttractedIsLoisLaneToMe());
 
-var clarkKent =true;
-var superman =false;
+var clarkKent = true;
+var superman = false;
 
 while(clarkKent){
     console.log("I'm just a nerdy columnist");
     var phoneBoothQuickChange = Math.random();
     if (phoneBoothQuickChange >= 0.5) {
-            clarkKent=false;
-            superman=true;
+            clarkKent = false;
+            superman = true;
             console.log("Now I'm Superman!");
     }
 }
