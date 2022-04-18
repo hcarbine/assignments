@@ -1,0 +1,10 @@
+body {
+    margin:100px;
+}
+.square {
+    height: 700px;
+    width: 700px;
+    border: solid black;
+    align-self: center;
+    margin:auto;
+}
