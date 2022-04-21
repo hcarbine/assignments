@@ -19,9 +19,31 @@ function clearMessages(){
     left[0].textContent = ""
     left[1].textContent = ""
     right[0].textContent = ""
-    right [1].textContent = ""
-    
+    right[1].textContent = ""   
 }
 clear.addEventListener("click",clearMessages)
+
+let dropdown = document.querySelector('select');
+
+const nodeListR = document.querySelectorAll(".right");
+for (i = 0; i < nodeListR.length; i++) {
+  nodeListR[i].style.backgroundColor = "red";
+}
+
+const nodeListL = document.querySelectorAll(".left");
+for (i = 0; i < nodeListL.length; i++) {
+  nodeListL[i].style.color = "white";
+           nodeListL[i].style.backgroundColor = "black";
+}
+
+const nodeListR1 = document.querySelectorAll(".right");
+for (i = 0; i < nodeListR.length; i++) {
+  nodeListR[i].style.backgroundColor = "burlywood";
+}
+
+const nodeListL1 = document.querySelectorAll(".left");
+for (i = 0; i < nodeListL.length; i++) {
+  nodeListL[i].style.color.backgroundColor = "lightblue";
+}
 
 
