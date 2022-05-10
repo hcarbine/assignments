@@ -1,3 +1,5 @@
+//*QUALIFIER*//
+
 const header = document.getElementById('header');
     header.innerHTML = "<h1>JavaScript Made This!!</h1><h2><span style='color:peachpuff'>Holly</span> wrote this JavaScript</h2>"
 
@@ -5,6 +7,7 @@ const header = document.getElementById('header');
     header.style.alignItems = "center"
     header.style.flexDirection = "column"
 
+//*BRONZE*//
 
 const left = document.getElementsByClassName("message left");
     left[0].textContent = "Hey! What are you doing this weekend?"
@@ -23,6 +26,8 @@ function clearMessages(){
     right[1].textContent = ""   
 }
 clear.addEventListener("click",clearMessages)
+
+//*SILVER*//
 
 const dropDown = document.getElementById('theme-drop-down');
 const rightMessage = document.getElementsByClassName('right');
@@ -60,4 +65,8 @@ function themeSelect(){
         };
     }
 }
+
+//*GOLD*//
+
+
 
