@@ -29,13 +29,11 @@
 #list {
     flex-direction: column;
     display: flex;
-    
 }
 
 #list > li{
     list-style-type: none;
     margin: 10px auto;
-    
 }
 
 #list div {

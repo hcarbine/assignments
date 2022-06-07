@@ -7,11 +7,13 @@ const header = document.getElementById('header');
     header.style.alignItems = "center"
     header.style.flexDirection = "column"
 
+
 //*BRONZE*//
 
 const left = document.getElementsByClassName("message left");
     left[0].textContent = "Hey! What are you doing this weekend?"
     left[1].textContent = "I need someone to walk my fish!"
+
 
 const right = document.getElementsByClassName("message right");
     right[0].textContent = "I'm going to the circus, why?"
