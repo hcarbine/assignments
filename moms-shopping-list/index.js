@@ -26,18 +26,21 @@ const buttons = document.createElement("li")
 edit.addEventListener("click", function(){
     const editItem = document.createElement("INPUT")
     editItem.setAttribute("class", "input")
-    listItem.replaceWith(editItem)
+    list.replaceChild(editItem, listItem)
+    let val = editItem.value
 
 const saveBtn = document.createElement("button")
     saveBtn.textContent = 'save'
     saveBtn.setAttribute("class", "list")
     buttons.replaceChild(saveBtn, edit)
+    saveBtn.style.marginRight = "5px"
 
 saveBtn.addEventListener("click", function(){
     buttons.replaceChild(edit, saveBtn)
     editItem.replaceWith(editItem.value)  
      })
- })     
+ })  
+
 const remove = document.createElement("button")
     remove.textContent = 'X'
     buttons.appendChild(remove)
