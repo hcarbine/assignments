@@ -1,0 +1,139 @@
+.container{
+    display: grid;
+   height: 100vh;
+    grid-gap: 10px;
+    margin:10px; 
+}
+.box1{
+    background-color: lightblue;
+    display: flex;
+    border-radius: 20px;
+    grid-column: 1 / span 4;
+    grid-row: 1;
+}
+
+.box2{
+    background-color: palevioletred;
+    display: flex;
+    border-radius: 20px;
+    grid-column: 1 / span 2;
+    grid-row: 2 / span 2;
+}
+
+.box3{
+    background-color: darkseagreen;
+    display: flex;
+    border-radius: 20px;
+    grid-column: 3 / span 2;
+    grid-row: 2;
+}
+
+.box4{
+    background-color: mediumslateblue;
+    display: flex;
+    border-radius: 20px;
+    grid-column: 3;
+    grid-row: 3;
+}
+
+.box5{
+    background-color: mediumslateblue;
+    display: flex;
+    border-radius: 20px;
+    grid-column: 4;
+    grid-row: 3;
+}
+
+@media only screen and (max-width:414px){
+    .container{
+        grid-gap: 5px;
+        margin:2.5px; 
+    }
+    .box1{
+        grid-column: 1 / span 4;
+        grid-row: 1;
+    }
+    
+    .box2{
+        grid-column: 1 / span 4;
+        grid-row: 2;
+    }
+    
+    .box3{
+        grid-column: 1 / span 4;
+        grid-row: 3 / span 2;
+    }
+    
+    .box4{
+        grid-column: 1 / span 4;
+        grid-row: 5;
+    }
+    
+    .box5{
+        grid-column: 1 /span 4;
+        grid-row: 6;
+    }  
+}
+
+@media only screen and (min-width:415px) and (max-width:820px) and (orientation: portrait) {
+    .container{
+        grid-gap: 5px;
+        margin:2.5px; 
+    }
+
+    .box1{
+        grid-column: 1 / span 4;
+        grid-row: 1;
+    }
+    
+    .box2{
+        grid-column: 1;
+        grid-row: 2;
+    }
+    
+    .box3{
+        grid-column: 2 / span 3;
+        grid-row: 2;
+    }
+    
+    .box4{
+        grid-column: 1 / span 4;
+        grid-row: 3;
+    }
+    
+    .box5{
+        grid-column: 1 /span 4;
+        grid-row: 4;
+    }  
+}
+
+@media only screen and (min-width:821px) and (max-width:1024px) and (orientation: portrait) {
+    .container{
+        grid-gap: 5px;
+        margin:2.5px; 
+    }
+    .box1{
+        grid-column: 1 / span 4;
+        grid-row: 1;
+    }
+    
+    .box2{
+        grid-column: 1;
+        grid-row: 2 / span 2;
+    }
+    
+    .box3{
+        grid-column: 2 / span 2;
+        grid-row: 2 / span 2;
+    }
+    
+    .box4{
+        grid-column: 4;
+        grid-row: 2 / span 2;
+    }
+    
+    .box5{
+        grid-column: 1 /span 4;
+        grid-row: 4;
+    }  
+}
