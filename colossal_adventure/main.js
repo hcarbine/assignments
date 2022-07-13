@@ -8,39 +8,35 @@ readline.question("What is your name?")
 console.log("Welcome " + name + "!!")
 
 let isAlive = true;
-var ranAway = [1, 2]
+let hasWon = false;
+let ranAway = false;
 var loseHp = [20,40,60,80]
 
-var showInventory = ['black licorice, mouthwash, toothpick']
-var useInventory = Math.floor(math.random() * useInventory.length)
-
 class GoodGuy{
-    constructor(name, hp, ap){
+    constructor(name, hp){
         this.name = name
         this.hp = hp
-        this.ap = ap
         this.inventory = ['black licorice', 'mouth wash', 'toothpick']
     }
 }
-
-const chocolate = new GoodGuy("chocolate", 100, 50)
+const chocolate = new GoodGuy("chocolate", 100)
 
 class Enemy{
-    constructor(name, hp, ap)
+    constructor(name, hp)
     {
-    this.name = name;
-    this.hp = hp;
-    this.ap = ap;
+    this.name = name
+    this.hp = hp
+    this.inventory = ['toothbrush']
     }
 }
 
-const candyCorn = new Enemy("Candy Corn", 50, 25)
-const goodAndPlenty = new Enemy("Good and Plenty", 50, 50)
-const circusPeanut = new Enemy("Circus Peanut", 75, 50)
+const candyCorn = new Enemy("Candy Corn", 100)
+const goodAndPlenty = new Enemy("Good and Plenty", 80)
+const circusPeanut = new Enemy("Circus Peanut", 120)
 
 const enemies = [candyCorn, goodAndPlenty, circusPeanut]
 
-while(isAlive){
+while(isAlive && !hasWon){
     const movement = readline.keyIn("What move would you like to make? [w] Walk, [s] Show Inventory, or [q] Quit? ", {limit: 'wsq'})
 
     if(movement === "w"){
@@ -51,14 +47,13 @@ while(isAlive){
     }
     else if(movement === "q"){
         isAlive = false
-        console.log("Go brush your teeth")
+        console.log("Go home and brush your teeth.")
     }
 }
-console.log(movement)
 
 function walk(){
-    const howWalk = Math.floor(Math.random()*4)
-    if(howWalk === 0){
+    let howWalk = Math.floor(Math.random()*4)
+    if(howWalk === 3){
         enemyEncounter()
     }else{
         console.log('You avoided the enemies!')
@@ -69,10 +64,10 @@ function showInventory(){
 }
 
 function enemyEncounter(){
-    let random = Math.floor(Math.random() * enemies.length)
-    const newEnemy = enemies[random]
+    let enemyEnc = Math.floor(Math.random() * enemies.length)
+    const newEnemy = enemies[enemyEnc]
     console.log('Oh No! ' + [newEnemy.name] + ' is up ahead!') 
-    const movement = readline.keyIn("Do you want to attack [a], run away [r], or quit [q]?",{limit: arq})
+    const movement = readline.keyIn("Do you want to attack [a], run away [r], or quit [q]?",{limit: "arq"})
     if(movement === 'a'){
         attack(newEnemy)
     }else if(movement === 'r'){
@@ -81,7 +76,7 @@ function enemyEncounter(){
         isAlive = false;
         console.log("Go home and brush your teeth.")
     }
-}
+
 
 function attack(newEnemy){
     while(chocolate.hp > 0 && newEnemy.hp >0 && !ranAway){
@@ -109,18 +104,41 @@ if(chocolate.hp>0){
 }
 
 function run(){
-
-    if(ranAway[Math.floor(Math.random())]===1){
+    let random = Math.floor(Math.random() * 4)
+    if(random===2){
         console.log('You have run away, but there are still enemies out there.')
     }else { 
-        console.log('You must attack!!');
+        console.log('You must attack!!')
         attackEnemy()
     }
     
 }
 
-function attackEnemy(){}
+function attackEnemy(){
+    chocolate.hp -= loseHp[Math.floor(Math.random() * loseHp.length)]
+    if(newEnemy.hp <= 0){
+        console.log ("You have defeated" + [newEnemy.name] + "!!") 
+    }
+    else{
+        console.log('Keep fighting!')
+        enemyAttack()
+    }
 
-function enemyAttack(){}
+}
+function enemyAttack(){
+    if(newEnemy.hp <=0){
+        console.log("You have defeated " + [newEnemy.name] + "!!")
+    }
+    else{
+        newEnemy.hp -= loseHp[Math.floor(Math.random() * loseHp.length)]
+        console.log(+[newEnemy.name]+ "is attacking back!")
+    }
+    if(chocolate.hp <= 0){
+        console.log("You have been defeated! Go home and brush your teeth.")
+    }
+}
+}
 
-function useInventory(){}
+function useInventory(){
+    
+}
