@@ -53,7 +53,7 @@ while(isAlive && !hasWon){
 
 function walk(){
     let howWalk = Math.floor(Math.random()*4)
-    if(howWalk === 3){
+    if(howWalk === 0){
         enemyEncounter()
     }else{
         console.log('You avoided the enemies!')
@@ -79,7 +79,20 @@ function enemyEncounter(){
 
 
 function attack(newEnemy){
+    // throw an attack on the enemy here
+    // 
+
     while(chocolate.hp > 0 && newEnemy.hp >0 && !ranAway){
+        // begin attack sequence
+
+        // user attacks enemy 
+        // console.log stmt
+        // newEnemy.hp -= loseHp[Math.floor(Math.random() * loseHp.length)]
+
+        // enemy attack enemy
+        // console.log stmt
+        // chocolate.hp -= loseHp[Math.floor(Math.random() * loseHp.length)]
+        /*
         let movement = readline.keyIn("Do you want to attack [a] or run away [r] or use inventory [u]?", {limit: 'aru'})
         if(movement === 'a'){
             attackEnemy(newEnemy)
@@ -89,7 +102,10 @@ function attack(newEnemy){
         }else if(movement === 'u'){
             useInventory()
         }
+        */
     }
+
+    // you might have to consider if both hp are 0
 if(chocolate.hp>0){
     console.log('Way to go '+ [chocolate.name] + '!! You defeated ' + [newEnemy.name] + '!!!')
     enemies.splice(enemies.indexOf(newEnemy), 1)
@@ -105,11 +121,12 @@ if(chocolate.hp>0){
 
 function run(){
     let random = Math.floor(Math.random() * 4)
-    if(random===2){
+    if(random===2 || random===3){
         console.log('You have run away, but there are still enemies out there.')
     }else { 
         console.log('You must attack!!')
-        attackEnemy()
+        // call attack() function
+        //attackEnemy()
     }
     
 }
