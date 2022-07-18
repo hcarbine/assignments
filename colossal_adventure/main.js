@@ -9,7 +9,7 @@ console.log("Welcome " + name + "!!")
 
 let isAlive = true;
 let hasWon = false;
-let ranAway = false;
+let runAway = false;
 var loseHp = [20,40,60,80]
 
 class GoodGuy{
@@ -19,7 +19,7 @@ class GoodGuy{
         this.inventory = ['black licorice', 'mouth wash', 'toothpick']
     }
 }
-const chocolate = new GoodGuy("chocolate", 100)
+const chocolate = new GoodGuy("Chocolate", 200)
 
 class Enemy{
     constructor(name, hp)
@@ -52,7 +52,7 @@ while(isAlive && !hasWon){
 }
 
 function walk(){
-    let howWalk = Math.floor(Math.random()*4)
+    let howWalk = Math.floor(Math.random()*3)
     if(howWalk === 0){
         enemyEncounter()
     }else{
@@ -76,18 +76,52 @@ function enemyEncounter(){
         isAlive = false;
         console.log("Go home and brush your teeth.")
     }
-
-
+    
 function attack(newEnemy){
-    // throw an attack on the enemy here
-    // 
+        chocolate.hp -= loseHp[Math.floor(Math.random() * loseHp.length)];
+        newEnemy.hp -= loseHp[Math.floor(Math.random() * loseHp.length)];
+            console.log([newEnemy.name] + " has lost " + [newEnemy.hp] + " points, and has " + [newEnemy.hp] + " left.")
+            console.log([chocolate.name] + " has lost " + [chocolate.hp] + " points, and has " + [chocolate.hp] + " points left.")    
+        if(newEnemy.hp <= 0){
+        console.log ("You have defeated " + [newEnemy.name] + "!!") 
+    } else if(chocolate.hp <=0)
+        console.log([newEnemy.name] + " has defeated you. Go brush your teeth.")
+    else{
+        console.log('Keep fighting!')
+        attack(newEnemy)
+    }
+}
+while(chocolate.hp > 0 && newEnemy.hp > 0 && !runAway)
+    attack(newEnemy)
+}
+function run(){
+    let random = (Math.floor(Math.random() * 2))
+    if(random === 1){
+        console.log('You have run away, but there are still enemies out there.')
+    }else { 
+        console.log('You must attack!!')
+            attack(newEnemy)
+                // call attack() function
+                //attackEnemy()
+        }
+            }
 
-    while(chocolate.hp > 0 && newEnemy.hp >0 && !ranAway){
+        if(chocolate.hp>0){
+            console.log('Way to go '+ [chocolate.name] + '!! You defeated ' + [newEnemy.name] + '!!!')
+                enemies.splice(enemies.indexOf(newEnemy), 1)
+                if(enemies.length ===0){
+                    console.log('Congratulations!! You defeated all the enemies!! You have won the game!!!!')
+                    hasWon = true
+                }
+            }else{
+                console.log('You have been defeated by the enemies.')
+                isAlive = false
+                }
         // begin attack sequence
 
         // user attacks enemy 
         // console.log stmt
-        // newEnemy.hp -= loseHp[Math.floor(Math.random() * loseHp.length)]
+        //  
 
         // enemy attack enemy
         // console.log stmt
@@ -103,41 +137,16 @@ function attack(newEnemy){
             useInventory()
         }
         */
-    }
+    
 
     // you might have to consider if both hp are 0
-if(chocolate.hp>0){
-    console.log('Way to go '+ [chocolate.name] + '!! You defeated ' + [newEnemy.name] + '!!!')
-    enemies.splice(enemies.indexOf(newEnemy), 1)
-    if(enemies.length ===0){
-        console.log('Congratulations!! You defeated all the enemies!! You have won the game!!!!')
-        hasWon = true
-    }
-}else{
-    console.log([newEnemy.name] + 'is still out there. Keep trying!')
-    isAlive = false
-    }
-}
 
-function run(){
-    let random = Math.floor(Math.random() * 4)
-    if(random===2 || random===3){
-        console.log('You have run away, but there are still enemies out there.')
-    }else { 
-        console.log('You must attack!!')
-        // call attack() function
-        //attackEnemy()
-    }
+
+
+
+
+/*function attackEnemy(){
     
-}
-
-function attackEnemy(){
-    chocolate.hp -= loseHp[Math.floor(Math.random() * loseHp.length)]
-    if(newEnemy.hp <= 0){
-        console.log ("You have defeated" + [newEnemy.name] + "!!") 
-    }
-    else{
-        console.log('Keep fighting!')
         enemyAttack()
     }
 
@@ -155,7 +164,9 @@ function enemyAttack(){
     }
 }
 }
-
+*/
 function useInventory(){
-    
+    var usingInventory=Math.floor(Math.random()*chocolate.inventory.length)
 }
+
+
