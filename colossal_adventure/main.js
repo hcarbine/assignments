@@ -1,11 +1,11 @@
 const readline = require('readline-sync');
 
-const greeting = "Welcome to the Candylicious Game!!"
+const greeting = "Welcome to the Candylicious Game!!\n"
 console.log(greeting)
 
 const name = 
 readline.question("What is your name?")
-console.log("Welcome " + name + "!!")
+console.log("\nWelcome " + name + "!!")
 
 let isAlive = true;
 let hasWon = false;
@@ -17,7 +17,7 @@ class GoodGuy{
         this.inventory = ['black licorice', 'mouth wash', 'toothpick']
     }
 }
-const chocolate = new GoodGuy("Chocolate", 200)
+const chocolate = new GoodGuy("Chocolate", 100)
 
 class Enemy{
     constructor(name, hp)
@@ -35,17 +35,17 @@ const circusPeanut = new Enemy("Circus Peanut", 60)
 const enemies = [candyCorn, goodAndPlenty, circusPeanut]
 
 while(isAlive && !hasWon){
-    const movement = readline.keyIn("What move would you like to make? [w] Walk, [s] Show Inventory, or [q] Quit? ", {limit: 'wsq'})
+    const movement = readline.keyIn("\nWhat would you like to do? \n[1] walk \n[2] show inventory \n[3] quit\n", {limit: '123'})
 
-    if(movement === "w"){
+    if(movement === "1"){
         walk()
     }
-    else if(movement === "s"){
+    else if(movement === "2"){
         showInventory()
     }
-    else if(movement === "q"){
+    else if(movement === "3"){
         isAlive = false
-        console.log("Goodbye!")
+        console.log("\nGoodbye!")
     }
 }
 
@@ -54,7 +54,7 @@ function walk(){
     if(howWalk === 0){
         enemyEncounter()
     }else{
-        console.log('You avoided the enemies!')
+        console.log('\nYou avoided the enemies!')
         walk()
     }
 }
@@ -65,15 +65,15 @@ function showInventory(){
 function enemyEncounter(){
     let enemyEnc = Math.floor(Math.random() * enemies.length)
     const newEnemy = enemies[enemyEnc]
-    console.log('Oh No! ' + [newEnemy.name] + ' is up ahead!') 
-    const movement = readline.keyIn("Do you want to attack [a], run away [r], or quit [q]?",{limit: "arq"})
-    if(movement === 'a'){
+    console.log('\nOh No! ' + [newEnemy.name] + ' is up ahead!') 
+    const movement = readline.keyIn("\nWhat would you like to do? \n[1] attack \n[2] run away \n[3] quit\n",{limit: "123"})
+    if(movement === '1'){
         attack(newEnemy)
-    }else if(movement === 'r'){
+    }else if(movement === '2'){
         run()
-    }else if(movement === 'q'){
+    }else if(movement === '3'){
         isAlive = false;
-        console.log("Goodbye!")
+        console.log("\nGoodbye!")
     }
 } 
 
@@ -83,27 +83,27 @@ function attack(newEnemy){
      let loseHp =[0,20,40,60]
         chocolate.hp -= loseHp[Math.floor(Math.random()*loseHp.length)];
         newEnemy.hp -= loseHp[Math.floor(Math.random()*loseHp.length)];
-            console.log([newEnemy.name] + " has " + [newEnemy.hp] + " left.")
+            console.log([newEnemy.name] + " has " + [newEnemy.hp] + " points left.")
             console.log([chocolate.name] + " has " + [chocolate.hp] + " points left.") 
     } 
         if(newEnemy.hp <= 0 && chocolate.hp >0){
-        console.log ("You have defeated " + [newEnemy.name] + "!!")
+        console.log ("\nYou have defeated " + [newEnemy.name] + "!!")
         chocolate.hp +=100 
         enemies.splice(enemies.indexOf(newEnemy), 1)
         
     
          }
          else if(newEnemy.hp>0 && chocolate.hp<=0){
-            console.log("You have been defeated.")
+            console.log("\nYou have been defeated.")
             isAlive = false
          }
          else if(newEnemy.hp<=0 && chocolate.hp<=0){
-            console.log("You both lost all your Hp. Game Over.")
+            console.log("\nYou both lost all your Hp. Game Over.")
             isAlive=false
          }
          
         if(enemies.length===0){
-            console.log("Congratulations! You defeated all the enemies!")
+            console.log("\nCongratulations! You defeated all the enemies!")
             hasWon=true
             } 
 }
@@ -130,9 +130,9 @@ function run(){
     const newEnemy = enemies[enemyEnc]
     let random = (Math.floor(Math.random() * 2))
     if(random === 1){
-        console.log('You have run away, but there are still enemies out there.')
+        console.log('\nYou have run away, but there are still enemies out there.')
     }else{
-        console.log('You must attack!!')
+        console.log('\nYou must attack!!')
         attack(newEnemy)
                 // call attack() function
                 //attackEnemy()
@@ -140,7 +140,7 @@ function run(){
             }
         }
     
-   console.log("Goodbye!") 
+   console.log("\nGoodbye!") 
     
   // if(chocolate.hp>0){
             
