@@ -9,8 +9,6 @@ console.log("Welcome " + name + "!!")
 
 let isAlive = true;
 let hasWon = false;
-let runAway = false;
-var loseHp = [20,40,60,80]
 
 class GoodGuy{
     constructor(name, hp){
@@ -32,7 +30,7 @@ class Enemy{
 
 const candyCorn = new Enemy("Candy Corn", 100)
 const goodAndPlenty = new Enemy("Good and Plenty", 80)
-const circusPeanut = new Enemy("Circus Peanut", 120)
+const circusPeanut = new Enemy("Circus Peanut", 60)
 
 const enemies = [candyCorn, goodAndPlenty, circusPeanut]
 
@@ -47,7 +45,7 @@ while(isAlive && !hasWon){
     }
     else if(movement === "q"){
         isAlive = false
-        console.log("Go home and brush your teeth.")
+        console.log("Goodbye!")
     }
 }
 
@@ -57,6 +55,7 @@ function walk(){
         enemyEncounter()
     }else{
         console.log('You avoided the enemies!')
+        walk()
     }
 }
 function showInventory(){
@@ -74,49 +73,77 @@ function enemyEncounter(){
         run()
     }else if(movement === 'q'){
         isAlive = false;
-        console.log("Go home and brush your teeth.")
+        console.log("Goodbye!")
     }
-    
+} 
+
 function attack(newEnemy){
-        chocolate.hp -= loseHp[Math.floor(Math.random() * loseHp.length)];
-        newEnemy.hp -= loseHp[Math.floor(Math.random() * loseHp.length)];
-            console.log([newEnemy.name] + " has lost " + [newEnemy.hp] + " points, and has " + [newEnemy.hp] + " left.")
-            console.log([chocolate.name] + " has lost " + [chocolate.hp] + " points, and has " + [chocolate.hp] + " points left.")    
-        if(newEnemy.hp <= 0){
-        console.log ("You have defeated " + [newEnemy.name] + "!!") 
-    } else if(chocolate.hp <=0)
-        console.log([newEnemy.name] + " has defeated you. Go brush your teeth.")
-    else{
-        console.log('Keep fighting!')
-        attack(newEnemy)
-    }
+    while(chocolate.hp > 0 && newEnemy.hp > 0){
+    // /console.log('Way to go '+ [chocolate.name] + '!! You defeated ' + [newEnemy.name] + '!!!
+     let loseHp =[0,20,40,60]
+        chocolate.hp -= loseHp[Math.floor(Math.random()*loseHp.length)];
+        newEnemy.hp -= loseHp[Math.floor(Math.random()*loseHp.length)];
+            console.log([newEnemy.name] + " has " + [newEnemy.hp] + " left.")
+            console.log([chocolate.name] + " has " + [chocolate.hp] + " points left.") 
+    } 
+        if(newEnemy.hp <= 0 && chocolate.hp >0){
+        console.log ("You have defeated " + [newEnemy.name] + "!!")
+        chocolate.hp +=100 
+        enemies.splice(enemies.indexOf(newEnemy), 1)
+        
+    
+         }
+         else if(newEnemy.hp>0 && chocolate.hp<=0){
+            console.log("You have been defeated.")
+            isAlive = false
+         }
+         else if(newEnemy.hp<=0 && chocolate.hp<=0){
+            console.log("You both lost all your Hp. Game Over.")
+            isAlive=false
+         }
+         
+        if(enemies.length===0){
+            console.log("Congratulations! You defeated all the enemies!")
+            hasWon=true
+            } 
 }
-while(chocolate.hp > 0 && newEnemy.hp > 0 && !runAway)
-    attack(newEnemy)
-}
+        
+
+    
+
+
+        // enemies.splice(enemies.indexOf(newEnemy), 1)
+        // splice enemy array
+        // check if user has defeated all enemies
+    // } else
+    //     console.log([newEnemy.name] + " has defeated you. Go brush your teeth.")
+    //     hasWon = false
+    // else{
+    //     console.log('Keep fighting!')
+    //     attack(newEnemy)
+    // }
+
+
+
 function run(){
+    let enemyEnc = Math.floor(Math.random() * enemies.length)
+    const newEnemy = enemies[enemyEnc]
     let random = (Math.floor(Math.random() * 2))
     if(random === 1){
         console.log('You have run away, but there are still enemies out there.')
-    }else { 
+    }else{
         console.log('You must attack!!')
-            attack(newEnemy)
+        attack(newEnemy)
                 // call attack() function
                 //attackEnemy()
-        }
-            }
 
-        if(chocolate.hp>0){
-            console.log('Way to go '+ [chocolate.name] + '!! You defeated ' + [newEnemy.name] + '!!!')
-                enemies.splice(enemies.indexOf(newEnemy), 1)
-                if(enemies.length ===0){
-                    console.log('Congratulations!! You defeated all the enemies!! You have won the game!!!!')
-                    hasWon = true
-                }
-            }else{
-                console.log('You have been defeated by the enemies.')
-                isAlive = false
-                }
+            }
+        }
+    
+   console.log("Goodbye!") 
+    
+  // if(chocolate.hp>0){
+            
         // begin attack sequence
 
         // user attacks enemy 
@@ -165,8 +192,8 @@ function enemyAttack(){
 }
 }
 */
-function useInventory(){
-    var usingInventory=Math.floor(Math.random()*chocolate.inventory.length)
-}
+// function useInventory(){
+//     var usingInventory=Math.floor(Math.random()*chocolate.inventory.length)
+// }
 
 
