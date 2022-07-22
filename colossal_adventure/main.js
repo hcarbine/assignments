@@ -4,7 +4,7 @@ const greeting = "Welcome to the Candylicious Game!!\n"
 console.log(greeting)
 
 const name = 
-readline.question("What is your name?")
+readline.question("What is your name? ")
 console.log("\nWelcome " + name + "!!")
 
 let isAlive = true;
@@ -35,15 +35,15 @@ const circusPeanut = new Enemy("Circus Peanut", 60)
 const enemies = [candyCorn, goodAndPlenty, circusPeanut]
 
 while(isAlive && !hasWon){
-    const movement = readline.keyIn("\nWhat would you like to do? \n[1] walk \n[2] show inventory \n[3] quit\n", {limit: '123'})
+    const movement = readline.keyIn("\nWhat would you like to do? \n[w] walk \n[s] show inventory \n[q] quit\n", {limit: 'wsq'})
 
-    if(movement === "1"){
+    if(movement === "w"){
         walk()
     }
-    else if(movement === "2"){
+    else if(movement === "s"){
         showInventory()
     }
-    else if(movement === "3"){
+    else if(movement === "q"){
         isAlive = false
         console.log("\nGoodbye!")
     }
@@ -66,12 +66,12 @@ function enemyEncounter(){
     let enemyEnc = Math.floor(Math.random() * enemies.length)
     const newEnemy = enemies[enemyEnc]
     console.log('\nOh No! ' + [newEnemy.name] + ' is up ahead!') 
-    const movement = readline.keyIn("\nWhat would you like to do? \n[1] attack \n[2] run away \n[3] quit\n",{limit: "123"})
-    if(movement === '1'){
+    const movement = readline.keyIn("\nWhat would you like to do? \n[a] attack \n[r] run away \n[q] quit\n",{limit: "arq"})
+    if(movement === 'a'){
         attack(newEnemy)
-    }else if(movement === '2'){
+    }else if(movement === 'r'){
         run()
-    }else if(movement === '3'){
+    }else if(movement === 'q'){
         isAlive = false;
         console.log("\nGoodbye!")
     }
@@ -132,7 +132,7 @@ function run(){
     if(random === 1){
         console.log('\nYou have run away, but there are still enemies out there.')
     }else{
-        console.log('\nYou must attack!!')
+        console.log('\nYou must attack!!\n')
         attack(newEnemy)
                 // call attack() function
                 //attackEnemy()
